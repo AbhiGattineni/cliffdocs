@@ -1,0 +1,39 @@
+# Secrets and local config
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Weekly report data (user uploads + generated output)
+reports/inbox/*
+!reports/inbox/README.md
+!reports/inbox/.gitkeep
+reports/output/*
+!reports/output/.gitkeep
+
+# Optional local docs / assets
+docs/
+assets/
+
+# Logs
+*.log
