@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "team-usage-report": {
+      "command": "C:\\Users\\YOU\\Documents\\Project Source code\\morning-brief-agent-main\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\YOU\\Documents\\Project Source code\\morning-brief-agent-main\\mcp_server.py",
+        "--stdio"
+      ],
+      "cwd": "C:\\Users\\YOU\\Documents\\Project Source code\\morning-brief-agent-main",
+      "env": {
+        "FASTMCP_SHOW_SERVER_BANNER": "false",
+        "REPORT_OUTPUT_DIR": "reports/output"
+      }
+    }
+  }
+}

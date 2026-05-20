@@ -3,9 +3,27 @@ import sys
 
 from dotenv import load_dotenv
 
-from agent import ReportAgent
-
 load_dotenv()
+
+
+def _ensure_project_deps() -> None:
+    try:
+        import openpyxl  # noqa: F401
+    except ImportError:
+        print(
+            "Missing dependency openpyxl. Use the project virtualenv:\n"
+            "  uv sync\n"
+            "  uv run python main.py --vitel vitel519 --linkedin linkedin519\n"
+            "Or: .venv\\Scripts\\python.exe main.py ...",
+            file=sys.stderr,
+        )
+        raise SystemExit(1) from None
+
+
+_ensure_project_deps()
+
+from agent import ReportAgent
+from report_output import format_run_result_text
 
 
 def main() -> None:
@@ -51,22 +69,8 @@ def main() -> None:
         print(f"Error: {exc}", file=sys.stderr)
         raise SystemExit(1) from exc
 
-    print("\nReports generated:\n")
-    if result.saved.vitel:
-        print(f"  Vitel:    {result.saved.vitel.resolve()}")
-        print("-" * 60)
-        print(result.vitel_text)
-        print()
-    if result.saved.linkedin:
-        print(f"  LinkedIn: {result.saved.linkedin.resolve()}")
-        print("-" * 60)
-        print(result.linkedin_text)
-        print()
-    if result.saved.combined:
-        print(f"  Combined: {result.saved.combined.resolve()}")
-        print("-" * 60)
-        print(result.combined_text)
-        print()
+    print()
+    print(format_run_result_text(result))
 
 
 if __name__ == "__main__":

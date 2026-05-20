@@ -1,9 +1,14 @@
 [project]
 name = "team-usage-report-agent"
-version = "0.2.0"
+version = "0.3.0"
 requires-python = ">=3.11"
 dependencies = [
     "pandas>=2.2.0",
     "openpyxl>=3.1.0",
     "python-dotenv>=1.2.2",
+    "mcp>=1.2.0",
 ]
+
+[project.scripts]
+team-usage-report = "main:main"
+team-usage-report-mcp = "mcp_server:main"
